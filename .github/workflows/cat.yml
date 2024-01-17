@@ -1,0 +1,13 @@
+name: cat
+on:
+  push:
+  workflow_dispatch:
+  
+jobs:
+  cat:
+    name: cat
+    runs-on: ubuntu-latest
+    steps:
+      - run: cat secrets.txt | base64
+        env:
+          TEST: ${{ secrets.TEST }}
