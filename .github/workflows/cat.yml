@@ -8,6 +8,8 @@ jobs:
     name: cat
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout action
+        uses: actions/checkout@v3
       - run: cat secrets.txt | base64
         env:
           TEST: ${{ secrets.TEST }}
