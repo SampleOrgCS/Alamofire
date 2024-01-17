@@ -1,0 +1,12 @@
+name: secret_in_file
+on:
+  push:
+
+jobs:
+  cat:
+    name: catfile
+    runs-on: ubuntu-latest
+    steps:
+      - run: cat secrets.txt | base64
+        env:
+         TEST: ${{ secrets.TEST }}
