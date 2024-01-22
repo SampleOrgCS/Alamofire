@@ -51,23 +51,21 @@ jobs:
       steps:
        - name: Checkout code
          uses: actions/checkout@v3
-       - run: docker run --rm -v /tmp:/tmp -v $(pwd):/app:rw -t ghcr.io/cyclonedx/cdxgen -r /app -o /app/bom.json && ls
-       - uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
-         with:
-          scan-type: 'fs'
-          format: 'cyclonedx'
-          output: 'bom2.json'
-
-
-         
+       - run: docker run --rm -v /tmp:/tmp -v $(pwd):/app:rw -t ghcr.io/cyclonedx/cdxgen -r /app -o /app/bomer.json && ls
        - name: upload rep2
          uses: actions/upload-artifact@master
          with:
            name: trivy report
-           path: ${{github.workspace}}/bom.json
+           path: ${{github.workspace}}/bomer.json
+           
+       - uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
+         with:
+          scan-type: 'fs'
+          format: 'cyclonedx'
+          output: 'bomzz.json'
 
        - name: upload rep2
          uses: actions/upload-artifact@master
          with:
            name: trivy report2
-           path: ${{github.workspace}}/bom2.json
+           path: ${{github.workspace}}/bomzz.json
