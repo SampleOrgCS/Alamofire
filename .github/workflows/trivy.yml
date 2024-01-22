@@ -39,5 +39,5 @@ jobs:
         uses: actions/upload-artifact@master
         with:
            name: trivy report
-           path: ${{github.workspace}}/trivy-results.*
+           path: ${{github.workspace}}/dependency-results.sbom.json
 
