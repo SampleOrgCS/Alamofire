@@ -64,7 +64,7 @@ jobs:
          uses: actions/upload-artifact@master
          with:
            name: trivy report
-           path: ${{github.workspace}}/app/bom.json
+           path: ${{github.workspace}}/bom.json
 
        - name: upload rep2
          uses: actions/upload-artifact@master
