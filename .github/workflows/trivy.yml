@@ -28,10 +28,11 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
         with:
-         scan-type: 'fs'
-         format: 'sarif'
-         output: 'trivy-results.sarif'
-         security-checks: 'vuln,config'
+          scan-type: 'fs'
+          format: 'github'
+          output: 'dependency-results.sbom.json'
+          image-ref: '.'
+          github-pat: ${{ secrets.GITHUB_TOKEN }}
 
          
       - name: upload rep
