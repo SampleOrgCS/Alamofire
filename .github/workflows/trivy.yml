@@ -30,7 +30,7 @@ jobs:
         with:
          scan-type: 'fs'
          security-checks: 'vuln,config'
-         input: .
+
          
       - name: upload rep
         uses: actions/upload-artifact@master
