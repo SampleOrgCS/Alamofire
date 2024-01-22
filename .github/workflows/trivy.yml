@@ -38,7 +38,7 @@ jobs:
       - name: upload rep
         uses: actions/upload-artifact@master
         with:
-           name: trivy report
+           name: trivy report - trivy gen
            path: ${{github.workspace}}/dependency-results.sbom.json
            
  run-trivy-on-sbom:
@@ -55,7 +55,7 @@ jobs:
        - name: upload rep2
          uses: actions/upload-artifact@master
          with:
-           name: trivy report
+           name: trivy report - docker cyclonedx
            path: ${{github.workspace}}/bomer.json
            
        - uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
@@ -67,5 +67,5 @@ jobs:
        - name: upload rep2
          uses: actions/upload-artifact@master
          with:
-           name: trivy report2
+           name: trivy report - trivy cyclonedx generated 
            path: ${{github.workspace}}/bomzz.json
