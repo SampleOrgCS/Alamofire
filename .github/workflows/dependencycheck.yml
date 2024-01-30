@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Depcheck Action - SCA
@@ -25,7 +25,7 @@ jobs:
             --enableRetired
             --enableExperimental
             --nvdApiKey $NVD_API_KEY
-      - run: ls ~/.m2/repository/org/owasp/dependency-check-data
+      - run: ls ~/.m2/*/*/*
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
