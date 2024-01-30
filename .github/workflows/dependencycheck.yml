@@ -32,10 +32,10 @@ jobs:
             --enableExperimental
        #     --nvdApiKey $NVD_API_KEY
 
-      - run: ls .dependency-check
-      - run: ls
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
            name: Depcheck report
            path: ${{github.workspace}}/reports
+
+      - run: ls
