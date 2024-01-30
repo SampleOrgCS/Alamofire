@@ -38,4 +38,4 @@ jobs:
            name: Depcheck report
            path: ${{github.workspace}}/reports
 
-      - run: ls
+      - run: ls dependency-check && ls
