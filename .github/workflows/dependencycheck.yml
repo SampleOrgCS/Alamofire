@@ -24,6 +24,8 @@ jobs:
           args: >
             --enableRetired
             --enableExperimental
+            --nvdApiKey $NVD_API_KEY
+      - run: ls ~/.m2/repository/org/owasp/dependency-check-data
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
