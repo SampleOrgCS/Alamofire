@@ -1,8 +1,6 @@
 name: Software Composition Analysis with Dependency-Check
 on:
   push:
-    branches: [ 'main', 'release/*' ]
-    tags: [ v* ]
   workflow_dispatch:
 
 jobs:
@@ -16,7 +14,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: |
-            ~/dependency-check/data
+            ~/.dependency-check/data
         # Ensure the key is unique and based on something that changes when the cache should be rebuilt
           key: ${{ runner.os }}-dependency-check-${{ hashFiles('*.db', '*.json') }}
           restore-keys: |
@@ -34,7 +32,8 @@ jobs:
             --enableExperimental
             --nvdApiKey $NVD_API_KEY
 
-      - run: ls dependency-check/data/ && ls
+      - run: ls .dependency-check
+      - run: ls
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
