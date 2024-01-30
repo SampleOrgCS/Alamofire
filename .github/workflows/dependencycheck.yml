@@ -28,12 +28,12 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: |
-            ~/.m2/repository/org/owasp/dependency-check-data
+            ~/.dependency-check/data/
         # Ensure the key is unique and based on something that changes when the cache should be rebuilt
           key: ${{ runner.os }}-dependency-check-${{ hashFiles('*.db', '*.json') }}
           restore-keys: |
              ${{ runner.os }}-dependency-check-
-      - run: ls ~/.m2/re*
+      - run: ls ~/.dependency-check/data/*
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
