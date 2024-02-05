@@ -21,7 +21,7 @@ jobs:
              ${{ runner.os }}-dependency-check-
       - name: Depcheck - Container
         run: |
-          docker run --name DC --volume ${{ github.workspace }}:/src owasp/dependency-check --scan '/src' --out "/src/build/reports" --nvdApiKey ${{ secrets.NVD_API_KEY }}
+          docker run --name DC --volume ${{ github.workspace }}:/src --volume ~/.cache/dependency-check:/usr/share/dependency-check/data owasp/dependency-check --scan '/src' --out "/src/build/reports" --nvdApiKey ${{ secrets.NVD_API_KEY }}
         #    docker create --name GL --entrypoint /bin/bash --interactive --volume ${{ github.workspace }}:/src zricethezav/gitleaks 
         #    docker start GL
         #    docker exec GL git config --global --add safe.directory '/src'
