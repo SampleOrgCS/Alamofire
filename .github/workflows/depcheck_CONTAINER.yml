@@ -21,16 +21,17 @@ jobs:
              ${{ runner.os }}-dependency-check-
       - name: Depcheck - Container
         run: |
-          docker run --name DC --volume ${{ github.workspace }}:/usr/share/dependency-check/data owasp/dependency-check --scan '.' --out "/project/build/reports"
+          docker run --name DC --volume ${{ github.workspace }}:/src owasp/dependency-check --scan '/src' --out "/src/build/reports" --nvdApiKey ${{ secrets.NVD_API_KEY }}
         #    docker create --name GL --entrypoint /bin/bash --interactive --volume ${{ github.workspace }}:/src zricethezav/gitleaks 
         #    docker start GL
         #    docker exec GL git config --global --add safe.directory '/src'
         #    docker exec GL 
-
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
       - name: Upload results - SCA
         uses: actions/upload-artifact@master
         with:
            name: Depcheck report
-           path: ${{github.workspace}}/reports
+           path: ${{github.workspace}}/build/reports
 
       - run: ls -la
