@@ -13,16 +13,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ./dependency-check/data
+
+#      - uses: actions/cache@v3
+  #      with:
+  #        path: |
+  #          ./dependency-check/data
         # Ensure the key is unique and based on something that changes when the cache should be rebuilt
-          key: ${{ runner.os }}-dependency-check-${{ hashFiles('*.db', '*.json') }}
-          restore-keys: |
-             ${{ runner.os }}-dependency-check-
+  #        key: ${{ runner.os }}-dependency-check-${{ hashFiles('*.db', '*.json') }}
+  #        restore-keys: |
+   #          ${{ runner.os }}-dependency-check-
       - name: Depcheck - Container
         run: ls 
         #    docker start GL
