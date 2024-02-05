@@ -1,0 +1,39 @@
+name: SCA - Depcheck - Container
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  Dependency_check:
+    runs-on: ubuntu-latest
+    container:
+      image: owasp/dependency-check
+      volumes: 
+       - ${{ github.workspace }}:/src
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ./dependency-check/data
+        # Ensure the key is unique and based on something that changes when the cache should be rebuilt
+          key: ${{ runner.os }}-dependency-check-${{ hashFiles('*.db', '*.json') }}
+          restore-keys: |
+             ${{ runner.os }}-dependency-check-
+      - name: Depcheck - Container
+        run: ls 
+        #    docker start GL
+        #    docker exec GL git config --global --add safe.directory '/src'
+        #    docker exec GL 
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+      - name: Upload results - SCA
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/build/reports
+
+      - run: ls -la
