@@ -9,4 +9,4 @@ jobs:
       uses: TestingOrgCS/WorkflowsRepo/.github/workflows/central_SONAR.yml@main
       secrets:
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-       GH_TOKEN: ${{ secrets.GH_TOKEN }}
+       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
