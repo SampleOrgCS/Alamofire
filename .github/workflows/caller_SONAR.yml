@@ -1,4 +1,4 @@
-name: SAST - SonarCloud (BT)
+name: SAST - SonarCloud - action
 on:
   push:
   pull_request_target:
