@@ -7,4 +7,5 @@ on:
 jobs:
    SAST_caller:
       uses: TestingOrgCS/WorkflowsRepo/.github/workflows/central_SONAR.yml@main
-      secrets: inherit
+      secrets: 
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
