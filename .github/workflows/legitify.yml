@@ -13,8 +13,7 @@ jobs:
           if [[ -f "legitify" ]]; then
              ./legitify -h
           else
-             
              wget https://legitify.legitsecurity.com/1.0.7/linux/amd64.tar.gz
-             tar -xzf legitify_1.0.7_linux_amd64.tar.gz
+             tar -xzf amd64.tar.gz
              ./legitify -h
           fi
