@@ -14,9 +14,7 @@ jobs:
           github_token: ${{ secrets.PAT_FOR_LEGITIFY }}
           upload_code_scanning: false
           extra: |
-            --output-format 'sarif',
-            --output-file 'test.sarif',
-            --org ${{ github.repository_owner }}
+            -- org Tech-it-or-live-it-Secure-CICD 
 
       - name: Legitify Action
         run: cat test.sarif
