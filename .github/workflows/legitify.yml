@@ -8,14 +8,13 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
-      - name: Legitify Action
-        uses: Legit-Labs/legitify@main
-        with:
-          github_token: ${{ secrets.PAT_FOR_LEGITIFY }}
-          upload_code_scanning: false
-          extra: |
-            '-- org Tech-it-or-live-it-Secure-CICD'
-
-      - name: Legitify Action
-        run: cat test.sarif
-    
+      - name: Legitify - Download & Install
+        run: |
+          if [[ -f "legitify" ]]; then
+             ./legitify -h
+          else
+             
+             wget https://legitify.legitsecurity.com/1.0.7/linux/amd64.tar.gz
+             tar -xzf legitify_1.0.7_linux_amd64.tar.gz
+             ./legitify -h
+          fi
