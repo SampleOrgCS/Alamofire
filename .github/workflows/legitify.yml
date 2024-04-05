@@ -14,10 +14,8 @@ jobs:
           github_token: ${{ secrets.PAT_FOR_LEGITIFY }}
           upload_code_scanning: false
           extra: |
-            --output-format,
-            sarif 
-            --output-file,
-            test.sarif 
+            --output-format 'sarif',
+            --output-file 'test.sarif',
             --org ${{ github.repository_owner }}
 
       - name: Legitify Action
