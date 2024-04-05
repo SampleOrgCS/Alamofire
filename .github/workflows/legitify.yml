@@ -12,7 +12,9 @@ jobs:
         uses: Legit-Labs/legitify@main
         with:
           github_token: ${{ secrets.PAT_FOR_LEGITIFY }}
-          artifact_name: "legi_report.sarif"
+          upload_code_scanning: false
+          extra: --output-format sarif --output-file test.sarif --scorecard no --org github.repository_owner
+
       - name: Legitify Action
-        run: cat legi_report.sarif
+        run: cat test.sarif
     
