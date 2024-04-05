@@ -1,4 +1,4 @@
-name: Legitify Analyze
+name: Legitify Analyze - eu-digital-identity-wallet GH Organization
 on:
     workflow_dispatch:
     schedule:
@@ -16,7 +16,7 @@ jobs:
      - name: Legitify Scan - CLI
        run: |
           if [[ -f "legitify" ]]; then
-             ./legitify -h
+             ./legitify analyze --token=${{ secrets.LEGITIFY_PAT }} --output-format sarif --output-file leg.sarif
           else
              wget https://legitify.legitsecurity.com/1.0.7/linux/amd64.tar.gz
              tar -xzf amd64.tar.gz
